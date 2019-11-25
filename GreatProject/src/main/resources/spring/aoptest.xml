@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--目标类就是那个需要执行核心业务的类-->
+    <bean id="userservice" class="com.huawei.servers.UserServiceImpl"></bean>
+    <!--切面类其实就是增强目标类方法的拓展业务类-->
+    <bean id="aspect" class="com.huawei.service.proxy.jdk.SecurityAspect"></bean>
+    <!--配置切面、切入点、通知-->
+    <aop:config>
+        <!--
+        切入点的配置
+        id:唯一标识
+        expression:切入点表达式，定义我们要对哪些类的哪些方法进行增强
+        -->
+
+        <aop:pointcut expression="execution (* *.*add(..))" id="pointCut01"></aop:pointcut>
+        <aop:aspect ref="aspect">
+            <aop:before method="checkPrivilege" pointcut-ref="pointCut01"></aop:before>
+        </aop:aspect>
+    </aop:config>
+</beans>
