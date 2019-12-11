@@ -9,6 +9,10 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
 
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
     <!--<context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/applicationContext-*.xml</param-value>
@@ -17,6 +21,36 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>-->
+
+
+    <!-- 1 给java代码起别名 -->
+    <servlet>
+        <!-- 起别名 -->
+        <servlet-name>login</servlet-name>
+        <!-- 确定给哪个类起别名,要求必须是类的全路径 -->
+        <servlet-class>com.myvision.web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!-- 3 确定类的请求路径和别名的关系 -->
+        <servlet-name>login</servlet-name>
+        <!-- 2 确定类的请求路径
+            第一个"/" 表示 "http://ip:端口/项目名/"
+            /hello 怎么范文? http://ip:端口/项目名/hello
+        -->
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>com.myvision.web.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/tt</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

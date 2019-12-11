@@ -11,7 +11,7 @@
     <title>登录页</title>
 </head>
 <body>
-    <form action="com.myvision.web.LoginServlet" method="post">
+    <form action="login" method="post">
         <table>
             <tr>
                 <td></td>

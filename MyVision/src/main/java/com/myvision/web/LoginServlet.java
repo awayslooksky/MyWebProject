@@ -12,6 +12,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //System.out.println("我执行了");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         User user = new User();
@@ -20,6 +21,7 @@ public class LoginServlet extends HttpServlet {
         UserService userService = new UserService();
         User user1 = userService.loginVerify(user);
         if(user1 !=null){
+            //System.out.println(user1.toString());
             // 使用重定向跳转到 首页 index.html
             resp.sendRedirect("practice_one.jsp");
         }else {

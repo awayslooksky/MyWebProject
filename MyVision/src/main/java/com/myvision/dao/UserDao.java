@@ -10,7 +10,7 @@ public class UserDao {
     public User findUserByNameAndPassword(User user) throws IOException {
         String username = user.getUsername();
         String password = user.getPassword();
-        FileReader fileReader = new FileReader("userinfo.txt");
+        FileReader fileReader = new FileReader("C:\\Users\\梁瑞腾\\IdeaProjects\\Work\\MyVision\\src\\main\\resources\\userinfo.txt");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
         while ((line=bufferedReader.readLine())!=null){
