@@ -8,16 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>首页</title>
 </head>
 <body>
+    <%
+        String status = (String)session.getAttribute("status");
+        if(status !=null ){
+            String[] split = status.split("\\:");
+            if(split[1].equals("1")){
+    %>
+        <h1>欢迎，<%=split[0]%></h1>
+    <%
+            }
+        }
+    %>
     <a href="http://www.baidu.com">百度</a>
     <%
         // 脚本片段: 使用循环判断等方法内的一段代码
         for(int i=1; i<=2; i++) {
     %>
-    <h1><%="你们真的太棒啦"%></h1>
-    <%="hahah"%>
+        <h1><%="你们真的太棒啦"%></h1>
+        <%="hahah"%>
     <% } %>
 
     <%

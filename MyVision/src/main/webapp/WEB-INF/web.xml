@@ -13,14 +13,24 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--<context-param>
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.myvision.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--配置监听器，让tomcat启动的时候就将spring的配置文件加载到servlet-context中-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!--配置一下servlet-context的公用参数，让监听器对象启动的时候去读取相关的配置文件-->
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/applicationContext-*.xml</param-value>
     </context-param>
-    &lt;!&ndash;这个监听器的作用是tomcat一启动就初始化spring容器&ndash;&gt;
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>-->
 
 
     <!-- 1 给java代码起别名 -->

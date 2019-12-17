@@ -1,5 +1,8 @@
 package com.myvision.bean;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class User {
     private int uid;
     private String username;
